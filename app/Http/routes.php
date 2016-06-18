@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/','PageController@home');
+
+Route::get('thankyou','PageController@thankyou');
+
+Route::get('cards','CardsController@index');
+Route::get('cards/{card}','CardsController@show');
+
+Route::post('cards/{card}/notes' , 'NotesController@store');
+
+Route::post('/','User1Controller@store');
+
+Route::get('about','PageController@about');
+
+

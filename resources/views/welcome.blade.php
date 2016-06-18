@@ -1,45 +1,58 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layout')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('header')
+<title>Welcome</title>
+@endsection    
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('content')
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+		<h1>	Welcome please register!	</h1>
+	
+	<h1>All users</h1>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+	@foreach ($user1s as $user1)
+		<div>
+			{{ $user1->name }}
+		</div>
+	
+	@endforeach
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+		<hr>
+		<h3>Fill in required informations</h3>
+	
+		<form  method="POST" action=" "> 
+				<input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+	
+			<ul class="list-group" >
 
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
-    </body>
-</html>
+			
+				<li  >
+				NAme
+				<div class="form-group" title="email" >
+					<textarea name="name" class="form-control" >
+					
+					</textarea>
+				</div>
+				</li  >
+
+				<li>Email
+				<div class="form-group" > 
+					<textarea name="email"  class="form-control" >
+					
+					</textarea>
+				</div>
+				</li>
+
+				<li  >
+					<div class="form-group" >
+					<button class="btn btn-primary">Register</button>
+					</div>
+				</li>
+			
+			</ul>
+		</form>
+	</div>
+</div>
+@stop
